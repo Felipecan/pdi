@@ -1,5 +1,8 @@
 function output_img = YIQ2RGB(input_img)
 
+    %ATENCAO: Nao sabemos ao certo se essa funcao ta ok, muito
+    %provaevelmente errada.
+
     % [rows, cols, channels] = size(input_img);
     
     output_img = uint8(zeros(size(input_img)));

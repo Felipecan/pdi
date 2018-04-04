@@ -1,5 +1,7 @@
 function output_img = RGB2YIQ(input_img)
 
+    %ATENCAO: Nao sabemos ao certo se essa funcao ta ok
+
     %[rows, cols, channels] = size(input_img);
     
     output_img = uint8(zeros(size(input_img)));
