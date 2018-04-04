@@ -102,7 +102,25 @@ if ~isempty(str)
                     disp("Digite 1 ou 2")
                 end
             case 6
-                %limiarizacao
+                prompt = 'Digite 1 para fazer a limiarizacao pelo usuario ou 2 para fazer pela media de Y: ';
+                opt = input(prompt);
+                if opt == 1
+                    prompt = 'Informe o valor do limiar: ';
+                    value = input(prompt);
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    th = thresh(copy_img, value);       %faz a limiarização
+                    %mostra as imagens combinadas
+                    subplot(1, 2, 1), imshow(raw)
+                    subplot(1, 2, 2), imshow(th)
+                elseif opt == 2                   
+                    copy_img = raw;                     %faz uma copia por seguranca                    
+                    th = thresh_mY(copy_img, value);       %faz a limiarização
+                    %mostra as imagens combinadas
+                    subplot(1, 2, 1), imshow(raw)
+                    subplot(1, 2, 2), imshow(th)
+                else
+                    disp("Digite 1 ou 2")
+                end
             case 7
                 prompt = 'Informe o tamanho do kernel: ';
                 sz_k = input(prompt);
