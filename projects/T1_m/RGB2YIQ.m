@@ -5,11 +5,6 @@ function output_img = RGB2YIQ(input_img)
     %[rows, cols, channels] = size(input_img);
     
     output_img = uint8(zeros(size(input_img)));
-    %output_img = zeros(size(input_img));
-    
-    %disp(size(output_img))
-    %disp(rows)
-    %disp(cols)
     
     for r = 1: size(input_img, 1)
         for c = 1: size(input_img, 2)

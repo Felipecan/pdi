@@ -7,10 +7,6 @@ function output_img = YIQ2RGB(input_img)
     
     output_img = uint8(zeros(size(input_img)));
     
-    %disp(size(output_img))
-    %disp(rows)
-    %disp(cols)
-    
     for r = 1: size(input_img, 1)
         for c = 1: size(input_img, 2)
             R = input_img(r, c, 1) + 0.9563*input_img(r, c, 2) + 0.621*input_img(r, c, 3);
