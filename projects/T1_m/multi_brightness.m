@@ -1,7 +1,5 @@
 function output_img = multi_brightness(input_img, value)
     
-    %ATENCAO: Tomar cuidado com o tipo de value, as vezes nao vem correto.
-    
     [rows, cols, channels] = size(input_img);
     
     output_img = uint8(zeros(size(input_img))); 
