@@ -67,7 +67,7 @@ if ~isempty(str)
                     value = input(prompt);
                     copy_img = raw;                     %faz uma copia por seguranca
                     yiq_m = RGB2YIQ(copy_img);          %transforma de rgb para yiq
-                    bright_img_y = add_brightness(yiq_m, value);
+                    bright_img_y = add_brightness_y(yiq_m, value);
                     brgb_m = YIQ2RGB(bright_img_y);             %volta para rgb
                     %mostra as imagens combinadas
                     subplot(1, 3, 1), imshow(raw)
@@ -92,7 +92,7 @@ if ~isempty(str)
                     value = input(prompt);
                     copy_img = raw;                     %faz uma copia por seguranca
                     yiq_m = RGB2YIQ(copy_img);          %transforma de rgb para yiq
-                    bright_img_y = multi_brightness(yiq_m, value);
+                    bright_img_y = multi_brightness_y(yiq_m, value);
                     brgb_m = YIQ2RGB(bright_img_y);             %volta para rgb
                     %mostra as imagens combinadas
                     subplot(1, 3, 1), imshow(raw)
