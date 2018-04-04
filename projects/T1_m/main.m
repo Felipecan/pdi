@@ -1,8 +1,5 @@
-%raw = imread('imgs/lena.png');
-
-
-%subplot(1, 2, 1), imshow(raw)
-%subplot(1, 2, 2), imshow(mean_filter)
+clc
+clear
 
 prompt = 'Informe o caminho para carregar a imegam: ';
 str = input(prompt, 's');
@@ -34,21 +31,76 @@ if ~isempty(str)
                 subplot(1, 4, 3), imshow(green_img)
                 subplot(1, 4, 4), imshow(blue_img)
             case 3
-                copy_img = raw;                     %faz uma copia por seguranca
-                neg_rgb = negative(copy_img);       %tranforma a imagem em negativo
-                %mostra as imagens combinadas
-                subplot(1, 2, 1), imshow(raw)
-                subplot(1, 2, 2), imshow(neg_rgb)                
+                prompt = 'Digite 1 para fazer em RGB ou 2 para operar em YIQ: ';
+                opt = input(prompt);
+                if opt == 1
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    neg_rgb = negative(copy_img);       %tranforma a imagem em negativo
+                    %mostra as imagens combinadas
+                    subplot(1, 2, 1), imshow(raw)
+                    subplot(1, 2, 2), imshow(neg_rgb)  
+                elseif opt == 2
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    yiq_m = RGB2YIQ(copy_img);          %transforma de rgb para yiq
+                    neg_y = negative_y(yiq_m);          %tranforma a imagem em negativo
+                    nrgb_m = YIQ2RGB(neg_y);             %volta para rgb
+                    %mostra as imagens combinadas
+                    subplot(1, 3, 1), imshow(raw)
+                    subplot(1, 3, 2), imshow(neg_y)
+                    subplot(1, 3, 3), imshow(nrgb_m)
+                else
+                    disp("Digite 1 ou 2")
+                end
             case 4
-                prompt = 'Informe o valor para dar o brilho, real(multiplicativo) ou inteiro(aditivo): ';
-                value = input(prompt);
-                copy_img = raw;                     %faz uma copia por seguranca
-                bright_img = brightness(copy_img, value);
-                %mostra as imagens combinadas
-                subplot(1, 2, 1), imshow(raw)
-                subplot(1, 2, 2), imshow(bright_img)  
+                prompt = 'Digite 1 para fazer em RGB ou 2 para operar em YIQ: ';
+                opt = input(prompt);
+                if opt == 1
+                    prompt = 'Informe o valor para dar o brilho. Obs: inteiro(aditivo): ';
+                    value = input(prompt);
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    bright_img = add_brightness(copy_img, value);
+                    %mostra as imagens combinadas
+                    subplot(1, 2, 1), imshow(raw)
+                    subplot(1, 2, 2), imshow(bright_img)
+                elseif opt == 2
+                    prompt = 'Informe o valor para dar o brilho. Obs: inteiro(aditivo): ';
+                    value = input(prompt);
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    yiq_m = RGB2YIQ(copy_img);          %transforma de rgb para yiq
+                    bright_img_y = add_brightness(yiq_m, value);
+                    brgb_m = YIQ2RGB(bright_img_y);             %volta para rgb
+                    %mostra as imagens combinadas
+                    subplot(1, 3, 1), imshow(raw)
+                    subplot(1, 3, 2), imshow(bright_img_y)
+                    subplot(1, 3, 3), imshow(brgb_m)
+                else
+                    disp("Digite 1 ou 2")
+                end
             case 5
-                %multiplicativo
+                prompt = 'Digite 1 para fazer em RGB ou 2 para operar em YIQ: ';
+                opt = input(prompt);
+                if opt == 1
+                    prompt = 'Informe o valor para dar o brilho. Obs: real nao negativo(multiplicativo): ';
+                    value = input(prompt);
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    bright_img = multi_brightness(copy_img, value);
+                    %mostra as imagens combinadas
+                    subplot(1, 2, 1), imshow(raw)
+                    subplot(1, 2, 2), imshow(bright_img)
+                elseif opt == 2
+                    prompt = 'Informe o valor para dar o brilho. Obs: real nao negativo(multiplicativo): ';
+                    value = input(prompt);
+                    copy_img = raw;                     %faz uma copia por seguranca
+                    yiq_m = RGB2YIQ(copy_img);          %transforma de rgb para yiq
+                    bright_img_y = multi_brightness(yiq_m, value);
+                    brgb_m = YIQ2RGB(bright_img_y);             %volta para rgb
+                    %mostra as imagens combinadas
+                    subplot(1, 3, 1), imshow(raw)
+                    subplot(1, 3, 2), imshow(bright_img_y)
+                    subplot(1, 3, 3), imshow(brgb_m)
+                else
+                    disp("Digite 1 ou 2")
+                end
             case 6
                 %limiarizacao
             case 7
