@@ -114,7 +114,7 @@ if ~isempty(str)
                     subplot(1, 2, 2), imshow(th)
                 elseif opt == 2                   
                     copy_img = raw;                     %faz uma copia por seguranca                    
-                    th = thresh_mY(copy_img, value);       %faz a limiarização
+                    th = thresh_mY(copy_img);       %faz a limiarização
                     %mostra as imagens combinadas
                     subplot(1, 2, 1), imshow(raw)
                     subplot(1, 2, 2), imshow(th)

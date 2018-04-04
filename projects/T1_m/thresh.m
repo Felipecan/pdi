@@ -13,6 +13,6 @@ function output_img = thresh(input_img, threshold)
         end
     end
     
-    %output_img = YIQ2RGB(output_img);
-
+    output_img = output_img(:,:,1);
+    
 end

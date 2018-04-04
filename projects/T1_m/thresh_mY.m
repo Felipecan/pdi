@@ -17,6 +17,6 @@ function output_img = thresh_mY(input_img)
         end
     end
     
-    %output_img = YIQ2RGB(output_img);
+    output_img = output_img(:,:,1);
 
 end
