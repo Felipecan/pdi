@@ -125,12 +125,12 @@ if ~isempty(str)
                 prompt = 'Informe o tamanho do kernel: ';
                 sz_k = input(prompt);
                 copy_img = raw;                     %faz uma copia por seguranca
-                av = avarage_filter(copy_img, sz_k);%aplica o filtro media
+                %av = avarage_filter(copy_img, sz_k);%aplica o filtro media
                 med = median_filter(copy_img, sz_k);%aplica o filtro mediana
                 %mostra as imagens combinadas
-                subplot(1, 3, 1), imshow(raw)
-                subplot(1, 3, 2), imshow(av) 
-                subplot(1, 3, 3), imshow(med) 
+                subplot(1, 2, 1), imshow(raw)
+                %subplot(1, 3, 2), imshow(av) 
+                subplot(1, 2, 2), imshow(med) 
             case 8
                 %yuri
             case 9
