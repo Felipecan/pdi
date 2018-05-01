@@ -11,13 +11,13 @@ function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, q)
     
     %rebatimento
     if strcmp(q, 'q1') == 1
-        temp = mat(:, 3);
-        mat(:, 3) = mat(:, 1);
-        mat(:, 1) = temp;
-
-        temp = mat(3, :);
-        mat(3, :) = mat(1, :);
-        mat(1, :) = temp;
+%         temp = mat(:, 3);
+%         mat(:, 3) = mat(:, 1);
+%         mat(:, 1) = temp;
+% 
+%         temp = mat(3, :);
+%         mat(3, :) = mat(1, :);
+%         mat(1, :) = temp;    
     end
     
     persistent r_end_loop;
@@ -62,5 +62,5 @@ function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, q)
           
         end
     end
-
+    
 end
