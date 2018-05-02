@@ -6,11 +6,11 @@ function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, q)
            
     in_img_bordes0 = zeros( size(in_img,1)+(floor(size(mat,1)/2))*2, size(in_img,2)+(floor(size(mat,2)/2))*2, size(in_img,3) );    
     in_img_bordes0(ceil(size(mat,1)/2):(size(in_img_bordes0,1)-floor(size(mat,1)/2)), ceil(size(mat,2)/2):(size(in_img_bordes0,2)-floor(size(mat,2)/2)), 1:size(in_img,3)) = in_img;   
-    out_img = uint8(in_img_bordes0);
-    %out_img = in_img_bordes0;
+    %out_img = zeros(size(in_img_bordes0), 'uint8');
+    out_img = uint8(in_img_bordes0);    
     
     %rebatimento
-    if strcmp(q, 'q1') == 1
+    if strcmp(q, 'r') == 1
         temp = mat(:, 3);
         mat(:, 3) = mat(:, 1);
         mat(:, 1) = temp;
@@ -34,8 +34,8 @@ function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, q)
         c_end_loop = x_end;
     end       
     
-    for r = ceil( size(mat, 1)/2 ) + x_beg: r_end_loop
-        for c = ceil( size(mat, 2)/2 ) + y_beg: c_end_loop
+    for r = ceil( size(mat, 1)/2 ) + y_beg: r_end_loop
+        for c = ceil( size(mat, 2)/2 ) + x_beg: c_end_loop
 
             sub_matrix = in_img_bordes0(r - floor( size(mat, 1)/2 ): (r - floor( size(mat, 1)/2 ))+(size(mat, 1)-1) , c - floor( size(mat, 2)/2 ): (c - floor( size(mat, 2)/2 ))+(size(mat, 2)-1), 1:size(in_img,3));
             

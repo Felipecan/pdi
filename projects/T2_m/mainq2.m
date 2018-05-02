@@ -35,18 +35,19 @@ if strcmp(letter, 'a') == 1
     out_img_rgb = convolution(img, mat, 0, 0, 0, 0, 'q2');
     out = uint8(conv2(img_gray, mat));
 
-    subplot(2, 3, 1), imshow(img), title('Original')
-    subplot(2, 3, 2), imshow(out_img_rgb), title('conv RGB')
-    subplot(2, 3, 3), imshow(out_img_g), title('conv gray')
+    subplot(2, 4, 1), imshow(img), title('Original')
+    subplot(2, 4, 2), imshow(out_img_rgb), title('conv RGB')
+    subplot(2, 4, 3), imshow(out_img_g), title('conv gray')
+    subplot(2, 4, 4), imshow(out), title('conv matlab')
     band = zeros(size(out_img_rgb));
     band(:,:,1) = out_img_rgb(:,:,1);
-    subplot(2, 3, 4), imshow(band), title('band R')
+    subplot(2, 4, 5), imshow(band), title('band R')
     band = zeros(size(out_img_rgb));
     band(:,:,2) = out_img_rgb(:,:,2);
-    subplot(2, 3, 5), imshow(band), title('band G')
+    subplot(2, 4, 6), imshow(band), title('band G')
     band = zeros(size(out_img_rgb));
     band(:,:,3) = out_img_rgb(:,:,3);
-    subplot(2, 3, 6), imshow(band), title('band B')
+    subplot(2, 4, 7), imshow(band), title('band B')
     
 elseif strcmp(letter, 'b') == 1
     prompt = 'Enter the number corresponding to the matrix below: \n1:\n-1/8 -1/8 -1/8\n-1/8   1  -1/8\n-1/8 -1/8 -1/8\n\n2:\n-1 0 1\n-1 0 1\n-1 0 1\n\n3:\n-1 -1 -1\n 0  0  0\n 1  1  1\n\n4:\n-1 -1 0\n-1  0 1\n 0  1 1\n\n';   
@@ -64,7 +65,7 @@ elseif strcmp(letter, 'b') == 1
         disp('Enter one of the values (1, 2, 3 or 4') 
         return
     end
-    
+
     prompt = 'Enter image path: ';
     img_path = input(prompt, 's');
 
@@ -89,6 +90,7 @@ elseif strcmp(letter, 'b') == 1
     band = zeros(size(out_img_rgb));
     band(:,:,3) = out_img_rgb(:,:,3);
     subplot(2, 4, 7), imshow(band), title('band B')
+    
 elseif strcmp(letter, 'c') == 1
     prompt = 'Enter the number corresponding to the matrix below: \n1:\n0 0  0\n0 1  0\n0 0 -1\n\n2:\n0 0 -1\n0 1  0\n0 0  0\n\n3:\n 0 0 2\n0 -1 0\n-1 0 0\n\n';   
     op_m = uint8(input(prompt)); 
@@ -140,6 +142,7 @@ elseif strcmp(letter, 'c') == 1
     band = zeros(size(out_img_rgb));
     band(:,:,3) = out_img_rgb(:,:,3);
     subplot(2, 4, 7), imshow(band), title('band B')
+    
 else
     disp('Please, enter the correct letter')
 end
