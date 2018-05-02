@@ -31,8 +31,8 @@ if strcmp(letter, 'a') == 1
 
     img_gray = RGB2YIQ(img);
     img_gray = img_gray(:, :, 1);
-    out_img_g = convolution(img_gray, mat, 0, 0, 0, 0, 'q2');
-    out_img_rgb = convolution(img, mat, 0, 0, 0, 0, 'q2');
+    out_img_g = convolution(img_gray, mat, 0, 0, 0, 0, 0, 'q2');
+    out_img_rgb = convolution(img, mat, 0, 0, 0, 0, 0, 'q2');
     out = uint8(conv2(img_gray, mat));
 
     subplot(2, 4, 1), imshow(img), title('Original')
@@ -73,8 +73,8 @@ elseif strcmp(letter, 'b') == 1
 
     img_gray = RGB2YIQ(img);
     img_gray = img_gray(:, :, 1);
-    out_img_g = convolution(img_gray, mat, 0, 0, 0, 0, 'q2');
-    out_img_rgb = convolution(img, mat, 0, 0, 0, 0, 'q2');
+    out_img_g = convolution(img_gray, mat, 0, 0, 0, 0, 0, 'q2');
+    out_img_rgb = convolution(img, mat, 0, 0, 0, 0, 0, 'q2');
     out = uint8(conv2(img_gray, mat));
     
     subplot(2, 4, 1), imshow(img), title('Original')
@@ -121,12 +121,15 @@ elseif strcmp(letter, 'c') == 1
     prompt = 'Enter the value of the Y coordinate to where the mask should be applied: ';
     y_e = uint64(input(prompt));
     
+    prompt = 'Enter the value for the offset: ';
+    offset = uint64(input(prompt));
+    
     img = imread(img_path);        
 
     img_gray = RGB2YIQ(img);
     img_gray = img_gray(:, :, 1);
-    out_img_g = convolution(img_gray, mat, x_b, y_b, x_e, y_e, 'q2');
-    out_img_rgb = convolution(img, mat, x_b, y_b, x_e, y_e, 'q1');
+    out_img_g = convolution(img_gray, mat, x_b, y_b, x_e, y_e, offset, 'q2');
+    out_img_rgb = convolution(img, mat, x_b, y_b, x_e, y_e, offset, 'q2');
     out = uint8(conv2(img_gray, mat));
     
     subplot(2, 4, 1), imshow(img), title('Original')

@@ -27,7 +27,7 @@ function out = equalizacao(entrada)
                 imgEq(i,j) = eqVal(imgGray(i,j) + 1); % +1 pois terao valores iguais a 0
         end
   end
-
+out = imgEq;
     %salvando imagens para plotar histograma
     imwrite(imgEq, 'imgEq.jpg');
     %plotar img cinza e equalizada

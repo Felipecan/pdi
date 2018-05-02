@@ -1,4 +1,4 @@
-function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, q)
+function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, offset, q)
 
     if x_beg < 0 || y_beg < 0 || x_beg > size(in_img,1) || y_beg > size(in_img,2) || x_end < 0 || y_end < 0 || x_end > size(in_img,1) || y_end > size(in_img,2)
         return
@@ -50,7 +50,7 @@ function out_img = convolution(in_img, mat, x_beg, y_beg, x_end, y_end, q)
           
             for i = 1:size(in_img, 3)
                 temp = temp_mat(:,:,i);
-                temp = sum(temp(:));
+                temp = sum(temp(:)) + offset;
                 if temp < 0
                     out_img(r, c, i) = 0;
                 elseif temp > 255
